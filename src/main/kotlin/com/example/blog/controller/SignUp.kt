@@ -8,6 +8,7 @@ class SignUp {
 
     @GetMapping("/signup")
     fun signup() : String{
+        String a = "teste"
         return "Teste"
     }
 
