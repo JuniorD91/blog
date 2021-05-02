@@ -14,6 +14,7 @@ pipeline{
      stage("test"){
       
       steps {
+          sh './mvnw test'
           echo "testing the application"
         }
      }
