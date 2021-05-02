@@ -22,8 +22,7 @@ pipeline{
      stage("deploy"){
       
       steps {
-          sh 'docker build -t spring-docker/blog .'
-          sh 'docker run -p 8081:8081 spring-docker/blog'
+          sh 'docker -v'
           echo "deploying the application"
         }
      }
