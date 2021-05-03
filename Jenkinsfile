@@ -1,5 +1,8 @@
 pipeline{
-  
+  {
+    registry = "juniordourado/blog"
+    dockerImage = ''
+  }
   agent any
   
   stages{
@@ -14,19 +17,32 @@ pipeline{
      stage("test"){
       
       steps {
-          sh './mvnw test'
+          //sh './mvnw test'
           echo "testing the application"
         }
      }
      
-     stage("deploy"){
+     stage("Build Imagem"){
       
       steps {
-          sh 'docker -v'
-          echo "deploying the application"
+          script {
+            dockerImage = docker.build registry + ":BUILD_NUMBER"
+          }
         }
      }
-     
+
+     stage("Deploy Image"){
+           steps {
+               script {
+                 docker.withRegistry(''){
+                    dockerImage.push()
+              }
+           }
+        }
+     }
+
+
+
   }
   
 }
