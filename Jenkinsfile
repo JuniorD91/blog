@@ -1,5 +1,5 @@
 pipeline{
-  {
+  environment{
     registry = "juniordourado/blog"
     dockerImage = ''
   }
