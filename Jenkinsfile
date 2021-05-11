@@ -9,7 +9,7 @@ pipeline{
     stage("build"){
       
       steps {
-          sh './mvnw clean package -DskipTests=true'
+          //sh './mvnw clean package -DskipTests=true'
           echo "building the application"
         }
      }
@@ -21,26 +21,13 @@ pipeline{
           echo "testing the application"
         }
      }
-     
-     stage("Build Imagem"){
+    
+    stage("test"){
       
       steps {
-          script {
-            dockerImage = docker.build registry + ":BUILD_NUMBER"
-          }
+          sh './mvnw test'
         }
      }
-
-     stage("Deploy Image"){
-           steps {
-               script {
-                 docker.withRegistry(''){
-                    dockerImage.push()
-              }
-           }
-        }
-     }
-
 
 
   }
