@@ -16,7 +16,7 @@ pipeline{
     stage('Deploy Image'){
       steps {
         script {
-          docker.withRegistry('e7eb8b6113cb.ngrok.io', '') {             
+          docker.withRegistry('https://e7eb8b6113cb.ngrok.io', '') {             
               dockerImage.push("$BUILD_NUMBER")
               dockerImage.push('latest')
           }
