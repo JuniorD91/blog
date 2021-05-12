@@ -10,7 +10,7 @@ pipeline{
       
       steps {
           //sh './mvnw clean package -DskipTests=true'
-          echo "building the application"
+          echo "building the application : ${env.BUILD_ID}"
         }
      }
      
