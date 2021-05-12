@@ -12,29 +12,6 @@ pipeline{
         script {dockerImage = docker.build imagename}
       }
      }
-     
-     stage("deploy In Docker Registry"){
-      
-      steps {
-          script {
-            docker.withRegistry('https://e7eb8b6113cb.ngrok.io', '') {
-              
-              echo "Valor do dockerImage = $dockerImage"
-             
-              dockerImage.push("$BUILD_NUMBER")
-              dockerImage.push('latest')
-            }
-        }
-     }
-     }
-    stage("deploy"){
-      
-      steps {
-            echo "deploy application"
-        }
-     }
-
-
+    
   }
-  
 }
