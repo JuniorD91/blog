@@ -17,7 +17,7 @@ pipeline{
       
       steps {
           script {
-            docker.withRegistry('https://172.21.0.4:5000', '') {
+            docker.withRegistry('https://e7eb8b6113cb.ngrok.io', '') {
               dockerImage.push("$BUILD_NUMBER")dockerImage.push('latest')
             }
         }
