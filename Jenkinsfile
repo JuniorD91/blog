@@ -1,7 +1,7 @@
 pipeline{
   environment{
-    registry = "blog"
-    dockerImage = 'juniordourado/blog'
+    imagename = "blog"
+    dockerImage = ''
   }
   agent any
   
@@ -9,8 +9,7 @@ pipeline{
     
     stage("build Image"){
       steps {
-        script {dockerImage = docker.build dockerImage}
-        //${env.BUILD_ID}"
+        script {dockerImage = docker.build imagename}
       }
      }
      
