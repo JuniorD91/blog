@@ -18,6 +18,9 @@ pipeline{
       steps {
           script {
             docker.withRegistry('https://e7eb8b6113cb.ngrok.io', '') {
+              
+              echo "Valor do dockerImage = $dockerImage"
+             
               dockerImage.push("$BUILD_NUMBER")
               dockerImage.push('latest')
             }
