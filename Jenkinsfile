@@ -17,7 +17,7 @@ pipeline{
       
       steps {
           script {
-            docker.withRegistry('http://172.21.0.4:5000', '') {
+            docker.withRegistry('https://172.21.0.4:5000', '') {
               dockerImage.push("$BUILD_NUMBER")dockerImage.push('latest')
             }
         }
