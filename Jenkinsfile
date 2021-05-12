@@ -1,6 +1,6 @@
 pipeline{
   environment{
-    registry = "blog"
+    registry = "juniordourado/blog"
     dockerImage = ''
   }
   agent any
@@ -25,10 +25,7 @@ pipeline{
     stage("deploy"){
       
       steps {
-            docker.withRegistry('tcp://172.21.0.4:5000') {
-
-            echo "registry entrou"
-          }
+            
         }
      }
 
