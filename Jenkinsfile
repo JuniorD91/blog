@@ -25,7 +25,10 @@ pipeline{
     stage("deploy"){
       
       steps {
-          sh './mvnw test'
+            docker.withRegistry('tcp://172.21.0.4:5000') {
+
+            echo "registry entrou"
+          }
         }
      }
 
