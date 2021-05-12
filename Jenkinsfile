@@ -6,9 +6,12 @@ pipeline{
   agent any
   
   stages{
+    
     stage("build Image"){
-      script {dockerImage = docker.build dockerImage}
-      //${env.BUILD_ID}"
+      steps {
+        script {dockerImage = docker.build dockerImage}
+        //${env.BUILD_ID}"
+      }
      }
      
      stage("test"){
