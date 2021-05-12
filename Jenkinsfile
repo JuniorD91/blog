@@ -14,11 +14,13 @@ pipeline{
       }
      }
      
-     stage("test"){
+     stage("deploy In Docker Registry"){
       
       steps {
-          //sh './mvnw test'
-          echo "testing the application"
+          script {
+            docker.withRegistry('172.21.0.4:5000', '') {
+              dockerImage.push("$BUILD_NUMBER")dockerImage.push('latest')
+            }
         }
      }
     
