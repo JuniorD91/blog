@@ -7,7 +7,7 @@ pipeline{
   
   stages{
     
-    stage("build Image"){
+    stage('build Image'){
       steps {
         script {dockerImage = docker.build imagename}
       }
@@ -18,7 +18,8 @@ pipeline{
       steps {
           script {
             docker.withRegistry('https://e7eb8b6113cb.ngrok.io', '') {
-              dockerImage.push("$BUILD_NUMBER")dockerImage.push('latest')
+              dockerImage.push("$BUILD_NUMBER")
+              dockerImage.push('latest')
             }
         }
      }
