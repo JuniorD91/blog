@@ -1,17 +1,14 @@
 pipeline{
   environment{
-    registry = "juniordourado/blog"
-    dockerImage = ''
+    registry = "blog"
+    dockerImage = 'juniordourado/blog'
   }
   agent any
   
   stages{
-    stage("build"){
-      
-      steps {
-          //sh './mvnw clean package -DskipTests=true'
-          echo "building the application : ${env.BUILD_ID}"
-        }
+    stage("build Image"){
+      script {dockerImage = docker.build dockerImage}
+      //${env.BUILD_ID}"
      }
      
      stage("test"){
